@@ -1,0 +1,28 @@
+package com.example.betaversion1;
+
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+public class Entrance extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_entrance);
+
+    }
+
+
+    public void SignUp(View view) {
+        Intent si = new Intent(this, SignUp.class);
+        startActivity(si);
+    }
+
+    public void Credits(View view) {
+
+    }
+}
