@@ -1,5 +1,8 @@
 package com.example.betaversion1;
 
+import static com.example.betaversion1.FBref.reAuth;
+import static com.example.betaversion1.FBref.refUsers;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +21,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignUp extends AppCompatActivity {
 
     EditText eT_username,eT_email,eT_password,eT_address;
-    String username,email,password,address;
+    String username,email,password,address,uid;
     private FirebaseAuth mAuth;
+    Users user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,38 +37,5 @@ public class SignUp extends AppCompatActivity {
         eT_address=(EditText) findViewById(R.id.eT_address);
     }
 
-    public void SignIn(View view) {
-        username=eT_username.getText().toString();
-        email=eT_email.getText().toString();
-        password=eT_password.getText().toString();
-        address=eT_address.getText().toString();
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("TAG", "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("TAG", "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(SignUp.this,"Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            Toast.makeText(SignUp.this, email+" "+password,Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
-
-                    }
-                });
-
-
-    }
-
-    public void updateUI(FirebaseUser u) {
-        if(u==null) Toast.makeText(SignUp.this, "failed", Toast.LENGTH_SHORT).show();
-        else Toast.makeText(SignUp.this, "successful", Toast.LENGTH_SHORT).show();
-    }
 }

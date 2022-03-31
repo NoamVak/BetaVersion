@@ -13,7 +13,7 @@
             android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".Entrance"
+            android:name=".OpeningScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
